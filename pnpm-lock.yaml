@@ -4,6 +4,7 @@ specifiers:
   '@nomiclabs/hardhat-ethers': 2.0.0
   '@nomiclabs/hardhat-etherscan': 3.0.0
   '@nomiclabs/hardhat-waffle': 2.0.0
+  '@openzeppelin/contracts': ^4.5.0
   '@typechain/ethers-v5': 7.0.1
   '@typechain/hardhat': 2.3.0
   '@types/chai': 4.2.21
@@ -12,6 +13,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 4.29.1
   '@typescript-eslint/parser': 4.29.1
   chai: 4.2.0
+  chai-bignumber: ^3.0.0
   dotenv: 10.0.0
   eslint: 7.29.0
   eslint-config-prettier: 8.3.0
@@ -36,6 +38,7 @@ devDependencies:
   '@nomiclabs/hardhat-ethers': 2.0.0_ethers@5.0.0+hardhat@2.9.3
   '@nomiclabs/hardhat-etherscan': 3.0.0_hardhat@2.9.3
   '@nomiclabs/hardhat-waffle': 2.0.0_a699ade2efc0893f3aafb6c694d9d0b0
+  '@openzeppelin/contracts': 4.5.0
   '@typechain/ethers-v5': 7.0.1_fef1e560c769a534e98ef515492c07bd
   '@typechain/hardhat': 2.3.0_hardhat@2.9.3+typechain@5.1.2
   '@types/chai': 4.2.21
@@ -44,6 +47,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 4.29.1_936a86c8ecf119451c520ce1ec5fda08
   '@typescript-eslint/parser': 4.29.1_eslint@7.29.0+typescript@4.5.2
   chai: 4.2.0
+  chai-bignumber: 3.0.0
   dotenv: 10.0.0
   eslint: 7.29.0
   eslint-config-prettier: 8.3.0_eslint@7.29.0
@@ -2432,6 +2436,10 @@ packages:
     dependencies:
       bignumber.js: 9.0.2
       nofilter: 1.0.4
+    dev: true
+
+  /chai-bignumber/3.0.0:
+    resolution: {integrity: sha512-SubOtaSI2AILWTWe2j0c6i2yFT/f9J6UBjeVGDuwDiPLkF/U5+/eTWUE3sbCZ1KgcPF6UJsDVYbIxaYA097MQA==}
     dev: true
 
   /chai/4.2.0:
