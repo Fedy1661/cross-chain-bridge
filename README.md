@@ -25,10 +25,13 @@ npx hardhat verify TOKEN_ADDRESS VALIDATOR_ADDRESS
 
 ```shell
 npx hardhat sign
+npx hardhat swap
+npx hardhat redeem
 ```
 
 #### Examples
 
 ```shell
 npx hardhat sign --from 0xb08A6d31689F15444f9F3060Ef6bB63E66Be76D2 --to 0xb08A6d31689F15444f9F3060Ef6bB63E66Be76D2 --amount 500000000000000000000000000000000000000000000000000000000000 --nfrom 97 --nto 4 --nonce 1 --network rinkeby
+npx hardhat swap --contract 0x70D74aa7d471E3131680A159F728197dc2893192 --to 0xb08A6d31689F15444f9F3060Ef6bB63E66Be76D2 --amount 100 --nto 97 --network rinkeby
 ```
