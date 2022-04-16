@@ -11,7 +11,7 @@
 
 ### Documentation
 
-[Bridge.sol](https://fedy1661.github.io/cross-chain-bridge/#/contracts/Bridge.sol:Bridge)
+[Bridge.sol](https://fedy1661.github.io/token-bridge/#/contracts/Bridge.sol:Bridge)
 
 ### Deploy
 
