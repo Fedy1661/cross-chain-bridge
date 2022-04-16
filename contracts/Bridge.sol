@@ -67,12 +67,19 @@ contract Bridge is ERC20 {
      * @param _nonce Swap number
      * @param _signature Proof
      */
-    function redeem(address _from, address _to, uint256 _amount, uint256 _networkFrom, uint256 _nonce, bytes memory _signature) public {
+    function redeem(
+        address _from,
+        address _to,
+        uint256 _amount,
+        uint256 _networkFrom,
+        uint256 _nonce,
+        bytes memory _signature
+    ) public {
         bytes32 message = keccak256(abi.encodePacked(_from, _to, _amount, _networkFrom, block.chainid, _nonce));
         bytes32 hashMessage = message.toEthSignedMessageHash();
 
-        require(!_crossNetworkTransfers[hashMessage], "Expired");
-        require(hashMessage.recover(_signature) == _validator, "Fail");
+        require(!_crossNetworkTransfers[hashMessage], "Expired"); /// Checking the use of the signature
+        require(hashMessage.recover(_signature) == _validator, "Fail"); /// Signature is done by the validator
 
         _crossNetworkTransfers[hashMessage] = true;
         _mint(_to, _amount);
