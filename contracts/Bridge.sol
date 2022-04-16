@@ -13,11 +13,11 @@ contract Bridge is ERC20 {
     using ECDSA for bytes32;
     using Counters for Counters.Counter;
 
-    Counters.Counter private _nonce;
+    Counters.Counter private _nonceCounter;
 
     address immutable _validator;
 
-    mapping(bytes32 => bool) _crossChainTransfers;
+    mapping(bytes32 => bool) _crossNetworkTransfers;
 
     event SwapInitialized(
         address from,
@@ -47,36 +47,36 @@ contract Bridge is ERC20 {
 
     /**
      * @dev Transfer tokens to another network.
-     * @param to User address to whom tokens should be sent.
-     * @param amount Amount of tokens.
-     * @param networkTo Network ID where to send.
+     * @param _to User address to whom tokens should be sent.
+     * @param _amount Amount of tokens.
+     * @param _networkTo Network ID where to send.
      */
-    function swap(address to, uint256 amount, uint256 networkTo) public {
-        _nonce.increment();
-        _burn(msg.sender, amount);
+    function swap(address _to, uint256 _amount, uint256 _networkTo) public {
+        _nonceCounter.increment();
+        _burn(msg.sender, _amount);
 
-        emit SwapInitialized(msg.sender, to, amount, block.chainid, networkTo, _nonce.current());
+        emit SwapInitialized(msg.sender, _to, _amount, block.chainid, _networkTo, _nonceCounter.current());
     }
 
     /**
      * @dev Provide proof that tokens were sent
-     * @param from Address where tokens were sent from
-     * @param to Address where tokens were sent
-     * @param amount Amount of tokens
-     * @param networkFrom ID from sent network
-     * @param nonce Swap number
-     * @param signature Proof
+     * @param _from Address where tokens were sent from
+     * @param _to Address where tokens were sent
+     * @param _amount Amount of tokens
+     * @param _networkFrom ID from sent network
+     * @param _nonce Swap number
+     * @param _signature Proof
      */
-    function redeem(address from, address to, uint256 amount, uint256 networkFrom, uint256 nonce, bytes memory signature) public {
-        bytes32 message = keccak256(abi.encodePacked(from, to, amount, networkFrom, block.chainid, nonce));
+    function redeem(address _from, address _to, uint256 _amount, uint256 _networkFrom, uint256 _nonce, bytes memory _signature) public {
+        bytes32 message = keccak256(abi.encodePacked(_from, _to, _amount, _networkFrom, block.chainid, _nonce));
         bytes32 hashMessage = message.toEthSignedMessageHash();
 
-        require(!_crossChainTransfers[hashMessage], "Expired");
-        require(hashMessage.recover(signature) == _validator, "Fail");
+        require(!_crossNetworkTransfers[hashMessage], "Expired");
+        require(hashMessage.recover(_signature) == _validator, "Fail");
 
-        _crossChainTransfers[hashMessage] = true;
-        _mint(to, amount);
+        _crossNetworkTransfers[hashMessage] = true;
+        _mint(_to, _amount);
 
-        emit Redeem(from, to, amount, networkFrom, block.chainid, nonce);
+        emit Redeem(_from, _to, _amount, _networkFrom, block.chainid, _nonce);
     }
 }
