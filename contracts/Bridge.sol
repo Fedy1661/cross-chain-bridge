@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 /**
  * @title Bridge
- * @dev ERC20 with cross-chain transfer
+ * @dev ERC20 with bridge
  */
 contract Bridge is ERC20 {
     using ECDSA for bytes32;

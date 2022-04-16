@@ -9,6 +9,10 @@
 |----------|---------|----------|---------|---------|
 | Bridge   | 100     | 100      | 100     | 100     |
 
+### Documentation
+
+[Bridge.sol](https://fedy1661.github.io/cross-chain-bridge/#/contracts/Bridge.sol:Bridge)
+
 ### Deploy
 
 ```shell
