@@ -2,14 +2,8 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-// amount, from, to, networkFrom, networkTo
-// поулчил event => подписал сообщение с backend
-
-// 1. Отправил транзакцию swap, emit Swap
-// 2. Прослушивает swap event, подписал параметры с backend, вернул пользователю
-// 3. redeem - проверил подпись и получил токены
+import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract Bridge is ERC20 {
     using ECDSA for bytes32;
