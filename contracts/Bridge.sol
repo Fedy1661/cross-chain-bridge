@@ -73,7 +73,7 @@ contract Bridge is ERC20 {
         uint256 _amount,
         uint256 _networkFrom,
         uint256 _nonce,
-        bytes memory _signature
+        bytes calldata _signature
     ) public {
         bytes32 message = keccak256(abi.encodePacked(_from, _to, _amount, _networkFrom, block.chainid, _nonce));
         bytes32 hashMessage = message.toEthSignedMessageHash();
