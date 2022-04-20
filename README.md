@@ -33,7 +33,7 @@ npx hardhat swap
 npx hardhat redeem
 ```
 
-#### Examples
+### Examples
 
 ```shell
 npx hardhat sign --from 0xb08A6d31689F15444f9F3060Ef6bB63E66Be76D2 --to 0xb08A6d31689F15444f9F3060Ef6bB63E66Be76D2 --amount 500000000000000000000000000000000000000000000000000000000000 --nfrom 97 --nto 4 --nonce 1 --network rinkeby
